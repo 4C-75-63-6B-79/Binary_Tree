@@ -16,10 +16,3 @@ Tree.prototype.buildTree = function(arr, start, end) {
     }
 }   
 
-function Test() {
-    let tree = new Tree();
-    tree.root = tree.buildTree([1,4,5,7,8], 0, 4);
-    console.log(tree);
-}
-
-Test();
