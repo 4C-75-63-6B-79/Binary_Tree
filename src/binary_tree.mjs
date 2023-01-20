@@ -16,3 +16,24 @@ Tree.prototype.buildTree = function(arr, start, end) {
     }
 }   
 
+Tree.prototype.insert = function(value) {
+    let node = this.root;
+    let parentNode;
+    while(node) {
+        parentNode = node;
+        if(node.data < value) {
+            node = node.right;
+        } else if(node.data > value) {
+            node = node.left;
+        } else {
+            break;
+        }
+    }
+    if(node === null) {
+        if(parentNode.data < value) {
+            parentNode.right = new Node(value);
+        } else if(parentNode.data > value) {
+            parentNode.left = new Node(value);
+        }
+    }
+}
