@@ -37,3 +37,44 @@ Tree.prototype.insert = function(value) {
         }
     }
 }
+
+Tree.prototype.delete = function(value) {
+    let node = this.root;
+    let parentNode;
+    while(node) {
+        parentNode = node;
+        if(node.data < value) {
+            node = node.right;
+        } else if(node.data > value) {
+            node = node.left;
+        } 
+        if(node.data === value) {
+            if(node.left === null &&  node.right === null) {
+                if(parentNode.data > value) {
+                    parentNode.left = null;
+                } else if(parentNode.data < value) {
+                    parentNode.right = null;
+                }
+                return true;
+            } else if(node.right !== null) {
+                let node1 = node.right;
+                let parentNode1;
+                while(node1.left) {
+                    parentNode1 = node1;
+                    node1 = node1.left;
+                }
+                let data = node1.data;
+                this.delete(node1.data);
+                node.data = data;
+                return true;                
+            } else {
+                if(parentNode.data > value) {
+                    parentNode.left = node.left;
+                } else if(parentNode.data < value) {
+                    parentNode.right = node.left;
+                }
+                return true;
+            }
+        }
+    }
+}
