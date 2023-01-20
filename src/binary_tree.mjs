@@ -98,8 +98,8 @@ Tree.prototype.levelOrder = function(callbackFn) {
     const result = [];
     while(stack.length > 0) {
         let node = stack.shift();
-        stack.push(node.left);
-        stack.push(node.right);
+        node.left ? stack.push(node.left) : 0;
+        node.right ? stack.push(node.right) : 0;
         callbackFn ? callbackFn(node) : result.push(node.data);
     }
     if(result.length > 0) {
