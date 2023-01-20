@@ -92,3 +92,17 @@ Tree.prototype.find = function(value) {
     }
     return null;
 }
+
+Tree.prototype.levelOrder = function(callbackFn) {
+    const stack = [this.root];
+    const result = [];
+    while(stack.length > 0) {
+        let node = stack.shift();
+        stack.push(node.left);
+        stack.push(node.right);
+        callbackFn ? callbackFn(node) : result.push(node.data);
+    }
+    if(result.length > 0) {
+        return result;
+    }
+}
