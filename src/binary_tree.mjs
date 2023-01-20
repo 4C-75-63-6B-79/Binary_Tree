@@ -106,3 +106,16 @@ Tree.prototype.levelOrder = function(callbackFn) {
         return result;
     }
 }
+
+Tree.prototype.levelOrderRecursion = function(callbackFn, stack=[this.root], result =[]) {
+    if(stack.length <= 0 || this.root === null) {
+        return;
+    } else {
+        let node = stack.shift();
+        node.left ? stack.push(node.left) : 0;
+        node.right ? stack.push(node.right) : 0;
+        callbackFn ? callbackFn(node) : result.push(node.data);
+        this.levelOrderRecursion(callbackFn, stack, result);
+    }
+    return result.length > 0 ? result : undefined;
+}
