@@ -90,4 +90,5 @@ Tree.prototype.find = function(value) {
             return node;
         }
     }
+    return null;
 }
