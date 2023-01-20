@@ -78,3 +78,16 @@ Tree.prototype.delete = function(value) {
         }
     }
 }
+
+Tree.prototype.find = function(value) {
+    let node = this.root;
+    while(node) {
+        if(node.data < value) {
+            node = node.right;
+        } else if(node.data > value) {
+            node = node.left;
+        } else {
+            return node;
+        }
+    }
+}
