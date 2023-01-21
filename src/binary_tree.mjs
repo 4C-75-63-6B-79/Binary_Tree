@@ -120,40 +120,40 @@ Tree.prototype.levelOrderRecursion = function(callbackFn, stack=[this.root], res
     return result.length > 0 ? result : undefined;
 }
 
-Tree.prototype.inorder = function(callBackFn, node = this.root, result=[]) {
+Tree.prototype.inOrder = function(callBackFn, node = this.root, result=[]) {
     if(node === null) {
         return;
     } 
-    this.inorder(callBackFn, node.left, result);    
+    this.inOrder(callBackFn, node.left, result);    
     callBackFn ? callBackFn(node) : result.push(node);
-    this.inorder(callBackFn, node.right, result);
+    this.inOrder(callBackFn, node.right, result);
     
     if(result.length > 0) {
         return result;
     }
 }
 
-Tree.prototype.preorder = function(callBackFn, node = this.root, result=[]) {
+Tree.prototype.preOrder = function(callBackFn, node = this.root, result=[]) {
     if(node === null) {
         return;
     } 
 
     callBackFn ? callBackFn(node) : result.push(node);
-    this.preorder(callBackFn, node.left, result);    
-    this.preorder(callBackFn, node.right, result);
+    this.preOrder(callBackFn, node.left, result);    
+    this.preOrder(callBackFn, node.right, result);
     
     if(result.length > 0) {
         return result;
     }
 }
 
-Tree.prototype.postorder = function(callBackFn, node = this.root, result=[]) {
+Tree.prototype.postOrder = function(callBackFn, node = this.root, result=[]) {
     if(node === null) {
         return;
     } 
 
-    this.postorder(callBackFn, node.left, result);    
-    this.postorder(callBackFn, node.right, result);
+    this.postOrder(callBackFn, node.left, result);    
+    this.postOrder(callBackFn, node.right, result);
     callBackFn ? callBackFn(node) : result.push(node);
     
     if(result.length > 0) {
@@ -201,7 +201,7 @@ Tree.prototype.isBalanced = function() {
 }
 
 Tree.prototype.rebalance = function() {
-    const arr = this.inorder().map(ele => ele.data);
+    const arr = this.inOrder().map(ele => ele.data);
     this.root = this.buildTree(arr.sort((a,b) => a-b).filter((ele, i, arr) => arr.indexOf(ele) === i));
 }
 
