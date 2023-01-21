@@ -204,3 +204,13 @@ Tree.prototype.rebalance = function() {
     const arr = this.inorder().map(ele => ele.data);
     this.root = this.buildTree(arr.sort((a,b) => a-b).filter((ele, i, arr) => arr.indexOf(ele) === i));
 }
+
+Tree.prototype.prettyPrint = function(node=this.root, prefix = '', isLeft = true) {
+    if (node.right !== null) {
+      prettyPrint(node.right, `${prefix}${isLeft ? '│   ' : '    '}`, false);
+    }
+    console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${node.data}`);
+    if (node.left !== null) {
+      prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
+    }
+}
