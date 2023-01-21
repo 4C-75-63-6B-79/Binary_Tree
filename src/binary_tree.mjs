@@ -1,7 +1,7 @@
 import Node from './node.mjs';
 
 export default function Tree(arr) {
-    this.root = this.buildTree(arr.sort().filter((ele, i, arr) => arr.indexOf(ele) === i));
+    this.root = this.buildTree(arr.sort((a,b) => a-b).filter((ele, i, arr) => arr.indexOf(ele) === i));
 }
 
 Tree.prototype.buildTree = function(arr, start=0, end=arr.length-1) {
@@ -198,4 +198,9 @@ Tree.prototype.isBalanced = function() {
         node.right ? stack.push(node.right) : 0;
     }
     return true;
+}
+
+Tree.prototype.rebalance = function() {
+    const arr = this.inorder().map(ele => ele.data);
+    this.root = this.buildTree(arr.sort((a,b) => a-b).filter((ele, i, arr) => arr.indexOf(ele) === i));
 }
