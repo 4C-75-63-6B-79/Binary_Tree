@@ -186,3 +186,16 @@ Tree.prototype.depth = function(node) {
     }
     return depth;
 }
+
+Tree.prototype.isBalanced = function() {
+    const stack = [this.root];
+    while(stack.length > 0) {
+        let node = stack.shift();
+        if(Math.abs(this.height(node.left) - this.height(node.right)) > 1) {
+            return false;
+        }
+        node.left ? stack.push(node.left) : 0;
+        node.right ? stack.push(node.right) : 0;
+    }
+    return true;
+}
