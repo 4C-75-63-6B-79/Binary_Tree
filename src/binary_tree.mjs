@@ -119,3 +119,16 @@ Tree.prototype.levelOrderRecursion = function(callbackFn, stack=[this.root], res
     }
     return result.length > 0 ? result : undefined;
 }
+
+Tree.prototype.inorder = function(callBackFn, node = this.root, result=[]) {
+    if(node === null) {
+        return;
+    } 
+    this.inorder(callBackFn, node.left, result);    
+    callBackFn ? callBackFn(node) : result.push(node);
+    this.inorder(callBackFn, node.right, result);
+    
+    if(result.length > 0) {
+        return result;
+    }
+}
