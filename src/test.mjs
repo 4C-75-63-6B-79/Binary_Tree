@@ -21,11 +21,11 @@ function Test() {
     console.log(tree.levelOrder());
     console.log(tree.levelOrderRecursion());
 
-    tree.inorder().forEach(ele => console.log(ele.data));
+    tree.inOrder().forEach(ele => console.log(ele.data));
     console.log('---------------------------------------');
-    tree.preorder().forEach(ele => console.log(ele.data));
+    tree.preOrder().forEach(ele => console.log(ele.data));
     console.log('---------------------------------------');
-    tree.postorder().forEach(ele => console.log(ele.data));
+    tree.postOrder().forEach(ele => console.log(ele.data));
     console.log('---------------------------------------');
 
     console.log(tree.height());
