@@ -146,3 +146,17 @@ Tree.prototype.preorder = function(callBackFn, node = this.root, result=[]) {
         return result;
     }
 }
+
+Tree.prototype.postorder = function(callBackFn, node = this.root, result=[]) {
+    if(node === null) {
+        return;
+    } 
+
+    this.postorder(callBackFn, node.left, result);    
+    this.postorder(callBackFn, node.right, result);
+    callBackFn ? callBackFn(node) : result.push(node);
+    
+    if(result.length > 0) {
+        return result;
+    }
+}
