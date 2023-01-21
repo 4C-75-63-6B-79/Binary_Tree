@@ -1,7 +1,7 @@
 import Node from './node.mjs';
 
-export default function Tree() {
-    this.root = null;
+export default function Tree(arr) {
+    this.root = this.buildTree(arr.sort().filter((ele, i, arr) => arr.indexOf(ele) === i));
 }
 
 Tree.prototype.buildTree = function(arr, start=0, end=arr.length-1) {
