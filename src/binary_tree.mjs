@@ -139,8 +139,8 @@ Tree.prototype.preorder = function(callBackFn, node = this.root, result=[]) {
     } 
 
     callBackFn ? callBackFn(node) : result.push(node);
-    this.inorder(callBackFn, node.left, result);    
-    this.inorder(callBackFn, node.right, result);
+    this.preorder(callBackFn, node.left, result);    
+    this.preorder(callBackFn, node.right, result);
     
     if(result.length > 0) {
         return result;
