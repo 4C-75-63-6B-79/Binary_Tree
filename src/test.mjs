@@ -18,8 +18,10 @@ function Test() {
 
     console.log(tree.find(5).data);
 
-    console.log(tree.levelOrder());
-    console.log(tree.levelOrderRecursion());
+    console.log('---------------------------------------');
+    console.log([...tree.levelOrder().map(ele => ele.data)]);
+    console.log('---------------------------------------');
+    console.log([tree.levelOrderRecursion().map(ele => ele.data)]);
 
     tree.inOrder().forEach(ele => console.log(ele.data));
     console.log('---------------------------------------');
