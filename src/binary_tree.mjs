@@ -132,3 +132,17 @@ Tree.prototype.inorder = function(callBackFn, node = this.root, result=[]) {
         return result;
     }
 }
+
+Tree.prototype.preorder = function(callBackFn, node = this.root, result=[]) {
+    if(node === null) {
+        return;
+    } 
+
+    callBackFn ? callBackFn(node) : result.push(node);
+    this.inorder(callBackFn, node.left, result);    
+    this.inorder(callBackFn, node.right, result);
+    
+    if(result.length > 0) {
+        return result;
+    }
+}
