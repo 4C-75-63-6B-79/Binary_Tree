@@ -160,3 +160,17 @@ Tree.prototype.postorder = function(callBackFn, node = this.root, result=[]) {
         return result;
     }
 }
+
+Tree.prototype.height = function(node = this.root) {
+    if(node !== null && node.left === null && node.right === null) {
+        return 1;
+    } else if(node === null) {
+        return 0;
+    }
+    let leftHeight = 1, rightHeight = 1, temp;
+    temp = this.height(node.left);
+    leftHeight += node ? temp : 0;
+    temp = this.height(node.right);
+    rightHeight += temp ? temp : 0;
+    return leftHeight < rightHeight ? rightHeight : leftHeight;
+}
