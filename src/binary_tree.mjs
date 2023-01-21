@@ -169,3 +169,20 @@ Tree.prototype.height = function(node = this.root) {
     let rightHeight = this.height(node.right); 
     return leftHeight < rightHeight ? rightHeight+1 : leftHeight+1;
 }
+
+Tree.prototype.depth = function(node) {
+    if(node.data === this.root.data) {
+        return 0;
+    }
+    let depth = 0;
+    let tempNode = this.root;
+    while(tempNode.data !== node.data) {
+        if(tempNode.data < node.data) {
+            tempNode = tempNode.right;
+        } else if(tempNode.data > node.data) {
+            tempNode = tempNode.left;
+        }
+        depth += 1;
+    }
+    return depth;
+}
