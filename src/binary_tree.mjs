@@ -4,7 +4,7 @@ export default function Tree() {
     this.root = null;
 }
 
-Tree.prototype.buildTree = function(arr, start, end) {
+Tree.prototype.buildTree = function(arr, start=0, end=arr.length-1) {
     if(start>end) {
         return null;
     } else {
