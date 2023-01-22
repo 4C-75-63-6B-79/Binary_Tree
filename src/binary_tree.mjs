@@ -77,6 +77,7 @@ Tree.prototype.delete = function(value) {
             }
         }
     }
+    return false;
 }
 
 Tree.prototype.find = function(value) {
